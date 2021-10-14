@@ -1,1 +1,22 @@
-<p>new-edit works!</p>
+<form formGroup="form">
+    <div class="row">
+        <div class="col-3">
+            <div class="form-group">
+                <label for="initDate">Fecha Ingreso:</label>
+                <input type="date" class="form-control">
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="form-group">
+                <label for="state">Estado:</label>
+                <br>
+                <ui-switch></ui-switch>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <app-entity></app-entity>
+        </div>
+    </div>
+</form>
