@@ -1,11 +1,13 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { UserRoutingModule } from './user-routing.module';
-import { NewEditComponent } from './new-edit/new-edit.component';
-import { ListComponent } from './list/list.component';
-import { ComponentsModule } from '../components/components.module';
+import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { UiSwitchModule } from 'ngx-ui-switch';
+import { ComponentsModule } from '../components/components.module';
+import { ShareModule } from '../core/share/share.module';
+import { ListComponent } from './list/list.component';
+import { NewEditComponent } from './new-edit/new-edit.component';
+import { UserRoutingModule } from './user-routing.module';
+
 
 const component = [NewEditComponent, ListComponent];
 
@@ -19,6 +21,7 @@ const component = [NewEditComponent, ListComponent];
     UserRoutingModule,
     ComponentsModule,
     UiSwitchModule,
+    ReactiveFormsModule,
   ],
   exports: [...component]
 })

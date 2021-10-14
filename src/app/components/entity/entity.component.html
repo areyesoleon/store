@@ -1,55 +1,65 @@
-<form class="w-100 h-100 d-flex flex-column">
-    <div class="row">
-        <div class="col-6">
-            <div class="form-group">
-                <label for="name">Nombre:</label>
-                <input type="text" id="name" name="name" class="form-control" placeholder="Nombre">
+<form [formGroup]="form">
+    <div class="w-100 h-100 d-flex flex-column" formGroupName="entidad">
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="name">Nombre:</label>
+                    <input type="text" id="name" name="name" class="form-control" placeholder="..."
+                        formControlName="nombre">
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="lastName">Apellido:</label>
+                    <input type="text" id="lastName" name="lastName" class="form-control" placeholder="..."
+                        formControlName="apellido">
+                </div>
             </div>
         </div>
-        <div class="col-6">
-            <div class="form-group">
-                <label for="lastName">Apellido:</label>
-                <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Apellido">
+        <div class="row">
+            <div class="col-3">
+                <div class="form-group">
+                    <label for="dpi">DPI:</label>
+                    <input type="number" id="dpi" name="dpi" class="form-control" placeholder="#############"
+                        formControlName="dpi">
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="form-group">
+                    <label for="nit">NIT:</label>
+                    <input type="text" id="nit" name="nit" class="form-control" placeholder="######-#"
+                        formControlName="nit">
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="form-group">
+                    <label for="tel">Telefono:</label>
+                    <input type="tel" id="tel" name="tel" class="form-control" placeholder="########" formControlName="telefono"
+                        telefono>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="form-group">
+                    <label for="birthday">Fecha Nacimiento:</label>
+                    <input type="date" id="birthday" name="birthday" class="form-control" placeholder="01-01-1993"
+                        formControlName="fecha_nacimiento">
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="form-group">
+                    <label for="email">Correo:</label>
+                    <input type="text" id="email" name="email" class="form-control" placeholder="...@....com"
+                        formControlName="correo">
+                </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-3">
-            <div class="form-group">
-                <label for="dpi">DPI:</label>
-                <input type="number" id="dpi" name="dpi" class="form-control" placeholder="22118819400101">
-            </div>
-        </div>
-        <div class="col-2">
-            <div class="form-group">
-                <label for="nit">NIT:</label>
-                <input type="text" id="nit" name="nit" class="form-control" placeholder="762388-9">
-            </div>
-        </div>
-        <div class="col-2">
-            <div class="form-group">
-                <label for="tel">Telefono:</label>
-                <input type="tel" id="tel" name="tel" class="form-control" placeholder="22426615">
-            </div>
-        </div>
-        <div class="col-2">
-            <div class="form-group">
-                <label for="birthday">Fecha Nacimiento:</label>
-                <input type="date" id="birthday" name="birthday" class="form-control" placeholder="01-01/1993">
-            </div>
-        </div>
-        <div class="col-2">
-            <div class="form-group">
-                <label for="email">Correo:</label>
-                <input type="text" id="email" name="email" class="form-control" placeholder="algo@aalgo.com">
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <div class="form-group">
-                <label for="address">Direccion:</label>
-                <textarea name="address" id="address" class="form-control" placeholder="Guatemala ...."></textarea>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="address">Direccion:</label>
+                    <textarea name="address" id="address" class="form-control" placeholder="..."
+                        formControlName="direccion"></textarea>
+                </div>
             </div>
         </div>
     </div>

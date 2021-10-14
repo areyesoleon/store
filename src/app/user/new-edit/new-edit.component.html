@@ -1,22 +1,27 @@
-<form formGroup="form">
+<form [formGroup]="form" (ngSubmit)="toSave()">
+    <div class="d-flex justify-content-end">
+        <button class="btn btn-primary" title="Guardar" type="submit"><i class="fas fa-save"></i></button>
+        &nbsp;
+        <button class="btn btn-danger" title="Limpiar" (click)="toClear()" type="button"><i class="fas fa-ban"></i></button>
+    </div>
     <div class="row">
         <div class="col-3">
             <div class="form-group">
                 <label for="initDate">Fecha Ingreso:</label>
-                <input type="date" class="form-control">
+                <input type="date" class="form-control" formControlName="fecha_ingreso">
             </div>
         </div>
         <div class="col-3">
             <div class="form-group">
                 <label for="state">Estado:</label>
                 <br>
-                <ui-switch></ui-switch>
+                <ui-switch [checked]="form.value.flg_activo"></ui-switch>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <app-entity></app-entity>
+            <app-entity [form]="form"></app-entity>
         </div>
     </div>
 </form>

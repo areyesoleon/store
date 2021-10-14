@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { FormComponent } from 'src/app/core/tools/form.component';
 
 @Component({
@@ -11,18 +11,14 @@ export class NewEditComponent extends FormComponent implements OnInit {
 
   constructor(protected builder: FormBuilder) {
     super();
-    this.initForm();
+    this.toInitForm();
   }
 
-  ngOnInit(): void {
-
-  }
-
-  private initForm() {
+  private toInitForm() {
     this._form = this.builder.group({
       empleado_id: null,
       fecha_ingreso: new Date(),
-      flg_activo: false,
+      flg_activo: true,
       entidad: this.builder.group({
         entidad_id: null,
         nombre: null,
@@ -35,6 +31,18 @@ export class NewEditComponent extends FormComponent implements OnInit {
         correo: null
       })
     });
+  }
+
+  ngOnInit(): void {
+
+  }
+
+  toSave() {
+    console.log(this._form.value);
+  }
+
+  toClear() {
+    this.toInitForm();
   }
 
 }
