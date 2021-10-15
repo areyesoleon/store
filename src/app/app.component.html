@@ -1,1 +1,24 @@
-<router-outlet></router-outlet>
+<div class="h-100 w-100 d-flex flex-column justify-content-between">
+    <div>
+        <nav class="navbar navbar-dark bg-dark">
+            <div class="d-flex w-100 justify-content-between">
+                <button type="button" class="btn btn-light btn-sm m-1">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <button type="button" class="btn btn-light btn-sm m-1">
+                    <i class="fas fa-user"></i>
+                </button>
+
+            </div>
+        </nav>
+    </div>
+    <div class="p-3">
+        <router-outlet></router-outlet>
+
+    </div>
+    <div>
+        <nav class="navbar navbar-dark bg-dark">
+            <span class="text-light">&nbsp;<i class="far fa-copyright"></i>TreeGT <i class="fas fa-tree"></i></span>
+        </nav>
+    </div>
+</div>
