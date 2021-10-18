@@ -1,5 +1,7 @@
 export interface Inventory {
-    inventario_id?: number;
+    id?: number;
+    sucursal_id: number;
+    producto_id: number;
     cantidad: number;
 }
 

@@ -47,7 +47,7 @@ export class MenuComponent implements OnInit {
     {
       icon: 'fa-box',
       title: 'Inventario',
-      click: '/user'
+      click: '/inventory'
 
     },
     {
