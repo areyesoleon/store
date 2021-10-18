@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserModule } from './user/user.module';
+import { CustomerModule } from './customer/customer.module';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { UserModule } from './user/user.module';
   imports: [
     BrowserModule,
     UserModule,
+    CustomerModule,
     MenuModule,
     AppRoutingModule,
     FormsModule, ReactiveFormsModule

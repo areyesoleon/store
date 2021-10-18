@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MenuComponent } from './menu/menu.component';
+import { MenuRoutingModule } from './menu-routing.module';
 
 const components = [MenuComponent]
 
@@ -9,6 +10,7 @@ const components = [MenuComponent]
     ...components
   ],
   imports: [
+    MenuRoutingModule,
     CommonModule
   ],
   exports: [

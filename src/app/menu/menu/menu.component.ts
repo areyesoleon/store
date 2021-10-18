@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -10,40 +11,59 @@ export class MenuComponent implements OnInit {
   public options = [
     {
       icon: 'fa-user',
-      title: 'Empleados'
+      title: 'Empleados',
+      click: '/user'
     },
     {
       icon: 'fa-user',
-      title: 'Cliente'
+      title: 'Cliente',
+      click: '/customer'
+
     },
     {
       icon: 'fa-user',
-      title: 'Proveedor'
+      title: 'Proveedor',
+      click: '/user'
+
     },
     {
       icon: 'fa-clock',
-      title: 'Turno'
+      title: 'Turno',
+      click: '/user'
+
     },
     {
       icon: 'fa-building',
-      title: 'Sucursal'
+      title: 'Sucursal',
+      click: '/user'
+
     },
     {
       icon: 'fa-cash-register',
-      title: 'Venta'
+      title: 'Venta',
+      click: '/user'
+
     },
     {
       icon: 'fa-box',
-      title: 'Inventario'
+      title: 'Inventario',
+      click: '/user'
+
     },
     {
       icon: 'fa-box-open',
-      title: 'Producto'
+      title: 'Producto',
+      click: '/user'
+
     },
   ];
-  constructor() { }
+  constructor(private _router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  toGo(path: string) {
+    this._router.navigate([path]);
   }
 
 }

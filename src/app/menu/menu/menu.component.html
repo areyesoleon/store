@@ -1,5 +1,5 @@
 <div class="w-100 d-flex justify-content-between flex-wrap">
-    <div *ngFor="let option of options" class="d-flex flex-column justify-content-around align-items-center p-3 bg-light card-menu">
+    <div (click)="toGo(option.click)" *ngFor="let option of options" class="d-flex flex-column justify-content-around align-items-center p-3 bg-light card-menu">
         <i class="fas {{option.icon}} fa-2x"></i>
         <span>{{option.title}}</span>
     </div>

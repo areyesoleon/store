@@ -1,6 +1,6 @@
 import { Entity } from "./entity.model";
 
 export interface Customer extends Entity {
-    cliente_id?: number;
+    id?: number;
     puntos: number;
 }
