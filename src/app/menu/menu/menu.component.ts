@@ -41,7 +41,7 @@ export class MenuComponent implements OnInit {
     {
       icon: 'fa-cash-register',
       title: 'Venta',
-      click: '/user'
+      click: '/sale'
 
     },
     {

@@ -9,6 +9,7 @@ import { InventoryModule } from './inventory/inventory.module';
 import { MenuModule } from './menu/menu.module';
 import { ProductModule } from './product/product.module';
 import { ProviderModule } from './provider/provider.module';
+import { SaleModule } from './sale/sale.module';
 import { TurnModule } from './turn/turn.module';
 import { UserModule } from './user/user.module';
 
@@ -26,6 +27,7 @@ import { UserModule } from './user/user.module';
     BranchModule,
     ProductModule,
     InventoryModule,
+    SaleModule,
     MenuModule,
     AppRoutingModule,
     FormsModule, ReactiveFormsModule
