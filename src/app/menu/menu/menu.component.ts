@@ -35,7 +35,7 @@ export class MenuComponent implements OnInit {
     {
       icon: 'fa-building',
       title: 'Sucursal',
-      click: '/user'
+      click: '/branch'
 
     },
     {
