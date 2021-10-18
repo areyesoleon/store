@@ -1,13 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NewEditComponent } from './user/new-edit/new-edit.component';
+import { MenuComponent } from './menu/menu/menu.component';
 
 const routes: Routes = [{
   path: 'user',
   loadChildren: './user/user.module#UserModule'
 }, {
+  path: 'menu',
+  loadChildren: './menu/menu.module#MenuModule'
+}, {
   path: '**',
-  component: NewEditComponent
+  component: MenuComponent
 }];
 
 @NgModule({

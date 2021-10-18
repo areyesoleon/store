@@ -1,3 +1,4 @@
+import { MenuModule } from './menu/menu.module';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -13,6 +14,7 @@ import { UserModule } from './user/user.module';
   imports: [
     BrowserModule,
     UserModule,
+    MenuModule,
     AppRoutingModule,
     FormsModule, ReactiveFormsModule
   ],

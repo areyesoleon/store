@@ -6,3 +6,10 @@ label {
 html, body {
     height: 100%;
 }
+
+.card-menu {
+    height: 100px !important; 
+    width: 150px;
+    border-radius: 10px 100px / 120px !important;
+    cursor: pointer;
+}
