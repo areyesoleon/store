@@ -29,7 +29,7 @@ export class MenuComponent implements OnInit {
     {
       icon: 'fa-clock',
       title: 'Turno',
-      click: '/user'
+      click: '/turn'
 
     },
     {

@@ -1,5 +1,7 @@
 export interface Turn {
-    turno_id?: number;
+    id?: number;
+    sucursal_id: number,
+    empleado_id: number,
     fecha_inicio: Date;
     fecha_fin: Date;
 }

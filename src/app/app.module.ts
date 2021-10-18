@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { UserModule } from './user/user.module';
 import { CustomerModule } from './customer/customer.module';
 import { ProviderModule } from './provider/provider.module';
+import { TurnModule } from './turn/turn.module';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { ProviderModule } from './provider/provider.module';
     UserModule,
     CustomerModule,
     ProviderModule,
+    TurnModule,
     MenuModule,
     AppRoutingModule,
     FormsModule, ReactiveFormsModule
