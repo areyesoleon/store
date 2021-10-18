@@ -23,7 +23,7 @@ export class MenuComponent implements OnInit {
     {
       icon: 'fa-user',
       title: 'Proveedor',
-      click: '/user'
+      click: '/provider'
 
     },
     {
