@@ -53,7 +53,7 @@ export class MenuComponent implements OnInit {
     {
       icon: 'fa-box-open',
       title: 'Producto',
-      click: '/user'
+      click: '/product'
 
     },
   ];

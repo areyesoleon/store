@@ -9,6 +9,7 @@ import { CustomerModule } from './customer/customer.module';
 import { ProviderModule } from './provider/provider.module';
 import { TurnModule } from './turn/turn.module';
 import { BranchModule } from './branch/branch.module';
+import { ProductModule } from './product/product.module';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { BranchModule } from './branch/branch.module';
     ProviderModule,
     TurnModule,
     BranchModule,
+    ProductModule,
     MenuModule,
     AppRoutingModule,
     FormsModule, ReactiveFormsModule

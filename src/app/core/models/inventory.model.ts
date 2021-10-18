@@ -5,7 +5,7 @@ export interface Inventory {
 
 
 export interface Product {
-    producto_id?: number;
+    id?: number;
     nombre: string;
     descripcion: string;
     costo: number;
