@@ -1,1 +1,37 @@
-<p>new-edit works!</p>
+<form [formGroup]="form" (ngSubmit)="toSave()">
+    <div class="d-flex justify-content-center">
+        <h2>Sucursal</h2>
+    </div>
+    <div class="d-flex justify-content-end">
+        <button class="btn btn-primary" title="Guardar" type="submit"><i class="fas fa-save"></i></button>
+        &nbsp;
+        <button class="btn btn-danger" title="Limpiar" (click)="toClear()" type="button"><i
+                class="fas fa-ban"></i></button>
+    </div>
+
+    <div class="row">
+        <div class="col-3">
+            <div class="form-group">
+                <label for="user">Encargado:</label>
+                <input type="string" id="user" name="user" class="form-control" placeholder="..."
+                    formControlName="emp_encargado_id">
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="form-group">
+                <label for="tel">Telefono:</label>
+                <input type="tel" id="tel" name="tel" class="form-control" placeholder="########"
+                    formControlName="telefono">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <label for="address">Direccion:</label>
+                <textarea name="address" id="address" class="form-control" placeholder="..."
+                    formControlName="direccion"></textarea>
+            </div>
+        </div>
+    </div>
+</form>
