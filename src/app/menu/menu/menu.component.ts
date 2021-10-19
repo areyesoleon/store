@@ -56,6 +56,12 @@ export class MenuComponent implements OnInit {
       click: '/product'
 
     },
+    {
+      icon: 'fa-shopping-cart',
+      title: 'Compra',
+      click: '/buy'
+
+    },
   ];
   constructor(private _router: Router) { }
 

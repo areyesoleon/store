@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BranchModule } from './branch/branch.module';
+import { BuyModule } from './buy/buy.module';
 import { CustomerModule } from './customer/customer.module';
 import { InventoryModule } from './inventory/inventory.module';
 import { MenuModule } from './menu/menu.module';
@@ -28,6 +29,7 @@ import { UserModule } from './user/user.module';
     ProductModule,
     InventoryModule,
     SaleModule,
+    BuyModule,
     MenuModule,
     AppRoutingModule,
     FormsModule, ReactiveFormsModule
