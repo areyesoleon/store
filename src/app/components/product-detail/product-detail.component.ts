@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { find } from 'lodash';
 import { CoreService } from 'src/app/core/core.service';
 import { Product } from 'src/app/core/models/inventory.model';
 import { Api } from 'src/app/core/resource/rest-api';
 import { FormComponent } from 'src/app/core/tools/form.component';
-import { find } from 'lodash';
 
 @Component({
   selector: 'app-product-detail',
@@ -31,6 +31,7 @@ export class ProductDetailComponent extends FormComponent implements OnInit {
   private toInitForm() {
     this.formDetalle = this.builder.group({
       producto_id: null,
+      nombre: null,
       cantidad: 1,
       descuento: 0,
       precio: 0,
@@ -51,6 +52,8 @@ export class ProductDetailComponent extends FormComponent implements OnInit {
     const finded: Product = find(this.products, { id: Number(this.formDetalle.value.producto_id) })!;
     console.log(finded);
     this.formDetalle.patchValue({ precio: finded.precio });
+    this.formDetalle.patchValue({ nombre: finded.nombre });
+
   }
 
   addRow() {
@@ -65,7 +68,18 @@ export class ProductDetailComponent extends FormComponent implements OnInit {
   }
 
   toDeleteRow(index: number) {
-    
+    this._form.value.detalles.splice(index, 1);
+  }
+
+  get total(): number {
+    let total = 0;
+    let descuento = 0;
+    this._form.value.detalles.forEach((row: any) => {
+      total += row.total;
+      descuento += row.descuento;
+    });
+    this._form.patchValue({ total, descuento });
+    return total;
   }
 
 }

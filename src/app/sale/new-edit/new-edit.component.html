@@ -11,6 +11,15 @@
     <div class="row">
         <div class="col-3">
             <div class="form-group">
+                <label for="employ">Sucursal:</label>
+                <select class="form-control" name="employ" id="employ" formControlName="sucursal_id">
+                    <option value="0">-- SUCURSALES --</option>
+                    <option *ngFor="let branch of branches" [value]="branch.id">{{branch.direccion}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="form-group">
                 <label for="customer">Cliente:</label>
                 <select name="customer" id="customer" class="form-control" formControlName="cliente_id">
                     <option value="0">-- EMPLEADO --</option>
@@ -32,14 +41,14 @@
                 </select>
             </div>
         </div>
-        <div class="col-3">
+        <div class="col-1">
             <div class="form-group">
                 <label for="doc">Documento:</label>
                 <input type="text" id="doc" name="doc" placeholder="..." class="form-control"
                     formControlName="documento">
             </div>
         </div>
-        <div class="col-3">
+        <div class="col-2">
             <div class="form-group">
                 <label for="date">Fecha:</label>
                 <input type="date" id="date" name="date" class="form-control" formControlName="fecha">

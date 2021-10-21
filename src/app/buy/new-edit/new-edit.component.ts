@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { CoreService } from 'src/app/core/core.service';
+import { Provider } from 'src/app/core/models/provider.model';
+import { Api } from 'src/app/core/resource/rest-api';
 import { FormComponent } from 'src/app/core/tools/form.component';
 
 @Component({
@@ -8,8 +11,14 @@ import { FormComponent } from 'src/app/core/tools/form.component';
   styleUrls: ['./new-edit.component.scss']
 })
 export class NewEditComponent extends FormComponent implements OnInit {
-  constructor(protected builder: FormBuilder) {
+
+  private _apiProvider: Api<Provider>;
+  providers: Provider[] = [];
+
+  constructor(protected builder: FormBuilder, private _core: CoreService) {
     super();
+    this._apiProvider = this._core.newResource('proveedores');
+    this.toGetProviders();
     this.toInitForm();
   }
 
@@ -21,7 +30,7 @@ export class NewEditComponent extends FormComponent implements OnInit {
       estado_compra_id: null,
       documento: null,
       fecha: new Date(),
-      detalles: []
+      detalles: [[]]
     });
   }
 
@@ -35,6 +44,19 @@ export class NewEditComponent extends FormComponent implements OnInit {
 
   toClear() {
     this.toInitForm();
+  }
+
+  async toGetProviders() {
+    try {
+      this.providers = await this._apiProvider.find().toPromise();
+      this.providers.forEach(async (provider: Provider) => {
+        const entidad = await this._apiProvider.findById(provider.entidad_id!).toPromise();
+        provider.nombre = entidad.nombre;
+        provider.apellido = entidad.apellido;
+      });
+    } catch (error) {
+
+    }
   }
 
 }
