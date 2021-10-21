@@ -1,5 +1,5 @@
 export interface Entity {
-    id?: number;
+    entidad_id?: number;
     nombre: string;
     apellido: string;
     dpi: number;

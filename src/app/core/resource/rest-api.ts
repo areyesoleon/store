@@ -18,8 +18,8 @@ export class Api<T> {
     });
   }
 
-  find(where?: any, subR?: any): Observable<T> {
-    return this._http.get<T>(`${this._url}/${this._area}${isNil(subR) ? '' :
+  find(where?: any, subR?: any): Observable<T[]> {
+    return this._http.get<T[]>(`${this._url}/${this._area}${isNil(subR) ? '' :
       `/${subR}`}${isNil(where) ? '' : `?${where}`}`,
       { headers: this.headers });
   }

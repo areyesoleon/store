@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { CoreService } from 'src/app/core/core.service';
 import { Branch } from 'src/app/core/models/branch.model';
+import { Entity } from 'src/app/core/models/entity.model';
+import { User } from 'src/app/core/models/user.model';
 import { Api } from 'src/app/core/resource/rest-api';
 import { FormComponent } from 'src/app/core/tools/form.component';
 import Swal from 'sweetalert2';
@@ -14,12 +16,21 @@ import Swal from 'sweetalert2';
 export class NewEditComponent extends FormComponent implements OnInit {
 
   private _api: Api<Branch>;
+  private _apiUser: Api<User>;
+  private _apiEntity: Api<Entity>;
+
+  users: User[] = [];
+
 
 
   constructor(protected builder: FormBuilder, private _core: CoreService) {
     super();
     this._api = this._core.newResource('sucursales');
+    this._apiUser = this._core.newResource('empleados');
+    this._apiEntity = this._core.newResource('entidades');
+
     this.toInitForm();
+    this.toGetEmploy();
   }
 
   private toInitForm() {
@@ -61,6 +72,21 @@ export class NewEditComponent extends FormComponent implements OnInit {
 
   toClear() {
     this.toInitForm();
+  }
+
+  async toGetEmploy() {
+    try {
+      this.users = await this._apiUser.find().toPromise();
+      console.log(this.users);
+      this.users.forEach(async (user: User) => {
+        const entidad = await this._apiEntity.findById(user.entidad_id!).toPromise();
+        user.nombre = entidad.nombre;
+        user.apellido = entidad.apellido;
+      });
+    } catch (error) {
+
+    }
+    console.log(this.users);
   }
 
 
