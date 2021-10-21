@@ -1,37 +1,46 @@
-<div class="row">
-    <div class="col-3">
-        <div class="form-group">
-            <label for="product">Producto:</label>
-            <select name="product" id="product" class="form-control"></select>
+<form [formGroup]="formDetalle">
+    <div class="row">
+        <div class="col-3">
+            <div class="form-group">
+                <label for="product">Producto:</label>
+                <select (ngModelChange)="setPrice()" name="product" id="product" class="form-control"
+                    formControlName="producto_id">
+                    <option value="0">-- PRODUCTO --</option>
+                    <option *ngFor="let product of products" [value]="product.id">{{product.nombre}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="form-group">
+                <label for="amount">Cantidad:</label>
+                <input type="number" id="amount" name="amount" class="form-control" formControlName="cantidad"
+                    placeholder="###">
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="form-group">
+                <label for="desc">Descuento:</label>
+                <input type="number" id="desc" name="desc" formControlName="descuento" class="form-control"
+                    placeholder="###">
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="form-group">
+                <label for="price">Precio:</label>
+                <input type="number" id="price" name="price" formControlName="precio" class="form-control"
+                    placeholder="###.##">
+            </div>
+        </div>
+        <div class="col-2 d-flex align-items-center justify-content-around">
+            <button class="btn btn-primary btn-sm" type="buttom" (click)="addRow()">
+                <i class="fas fa-check"></i>
+            </button>
+            <button class="btn btn-danger btn-sm" type="button" (click)="toClean()">
+                <i class="far fa-times-circle"></i>
+            </button>
         </div>
     </div>
-    <div class="col-3">
-        <div class="form-group">
-            <label for="amount">Cantidad:</label>
-            <input type="number" id="amount" name="amount" class="form-control" placeholder="###">
-        </div>
-    </div>
-    <div class="col-2">
-        <div class="form-group">
-            <label for="desc">Descuento:</label>
-            <input type="number" id="desc" name="desc" class="form-control" placeholder="###">
-        </div>
-    </div>
-    <div class="col-2">
-        <div class="form-group">
-            <label for="price">Precio:</label>
-            <input type="number" id="price" name="price" class="form-control" placeholder="###.##">
-        </div>
-    </div>
-    <div class="col-2 d-flex align-items-center justify-content-around">
-        <button class="btn btn-primary btn-sm" type="buttom">
-            <i class="fas fa-check"></i>
-        </button>
-        <button class="btn btn-danger btn-sm" type="button">
-            <i class="far fa-times-circle"></i>
-        </button>
-    </div>
-</div>
+</form>
 <div>&nbsp;</div>
 <div class="row">
     <div class="col">
@@ -48,7 +57,20 @@
                 </tr>
             </thead>
             <tbody>
+                <tr *ngFor="let detail of form.value.detalles; let i = index">
+                    <td>{{detail.id}}</td>
+                    <td>{{detail.nombre}}</td>
+                    <td>{{detail.cantidad}}</td>
+                    <td>{{detail.descuento}}</td>
+                    <td>{{detail.precio}}</td>
+                    <td>{{detail.total}}</td>
+                    <td>
+                        <button class="btn btn-danger" type="button" (click)="toDeleteRow(i)">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
 
+                </tr>
             </tbody>
             <tfoot>
                 <tr class="float-right">
