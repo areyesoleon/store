@@ -3,7 +3,7 @@
         <h2>Cliente</h2>
     </div>
     <div class="d-flex justify-content-end">
-        <button class="btn btn-primary" title="Guardar" type="submit"><i class="fas fa-save"></i></button>
+        <button [disabled] = "form.invalid" class="btn btn-primary" title="Guardar" type="submit"><i class="fas fa-save"></i></button>
         &nbsp;
         <button class="btn btn-danger" title="Limpiar" (click)="toClear()" type="button"><i class="fas fa-ban"></i></button>
     </div>

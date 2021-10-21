@@ -3,7 +3,8 @@
         <h2>Turno</h2>
     </div>
     <div class="d-flex justify-content-end">
-        <button class="btn btn-primary" title="Guardar" type="submit"><i class="fas fa-save"></i></button>
+        <button [disabled]="form.invalid" class="btn btn-primary" title="Guardar" type="submit"><i
+                class="fas fa-save"></i></button>
         &nbsp;
         <button class="btn btn-danger" title="Limpiar" (click)="toClear()" type="button"><i
                 class="fas fa-ban"></i></button>
@@ -12,14 +13,14 @@
         <div class="col-3">
             <div class="form-group">
                 <label for="initDate">Fecha Inicio:</label>
-                <input type="date" class="form-control" formControlName ="fecha_inicio">
+                <input type="date" class="form-control" formControlName="fecha_inicio">
             </div>
         </div>
         <div>&nbsp;</div>
         <div class="col-3">
             <div class="form-group">
                 <label for="initDate">Fecha Fin:</label>
-                <input type="date" class="form-control" formControlName ="fecha_fin">
+                <input type="date" class="form-control" formControlName="fecha_fin">
             </div>
         </div>
     </div>
