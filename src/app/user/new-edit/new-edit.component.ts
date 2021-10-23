@@ -56,7 +56,6 @@ export class NewEditComponent extends FormComponent implements OnInit {
   }
 
   async toSave() {
-    const opt = (this.id) ? 'insert' : 'update';
     try {
       if (this.id) {
         await this._api.update(this._form.value, null, null, this._form.value.id).toPromise();

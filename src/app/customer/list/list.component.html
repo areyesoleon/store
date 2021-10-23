@@ -1,1 +1,28 @@
-<p>list works!</p>
+<div class="d-flex justify-content-center">
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th class="text-center">#</th>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>
+                    <button class="btn btn-primary" type="button" (click)="toGo()">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let customer of customers; let i = index">
+                <td class="text-center">{{i + 1}}</td>
+                <td>{{customer.nombre}}</td>
+                <td>{{customer.apellido}}</td>
+                <td>
+                    <button class="btn btn-warning" type="button" (click)="toEdit(customer.id)">
+                        <i class="far fa-edit"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
