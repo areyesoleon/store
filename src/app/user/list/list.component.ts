@@ -1,4 +1,9 @@
+import { User } from './../../core/models/user.model';
 import { Component, OnInit } from '@angular/core';
+import { CoreService } from 'src/app/core/core.service';
+import { Api } from 'src/app/core/resource/rest-api';
+import { Entity } from 'src/app/core/models/entity.model';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -7,9 +12,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
-  constructor() { }
+  private _api: Api<any>;
+  private _apiEntity: Api<Entity>;
+
+  users: User[] = [];
+
+  constructor(private _core: CoreService, private _router: Router) { 
+    this._api = this._core.newResource('empleados');
+    this._apiEntity = this._core.newResource('entidades');
+    this.toGetInfo();
+  }
 
   ngOnInit(): void {
+
+  }
+
+  async toGetInfo() {
+    this.users = await this._api.find().toPromise(); 
+    this.users.forEach(async (user: User) => {
+      const entidad = await this._apiEntity.findById(user.entidad_id!).toPromise();
+      user.nombre = entidad.nombre;
+      user.apellido = entidad.apellido;
+    });
+    console.log(this.users);
+  }
+
+  toEdit(id: number = 0) {
+    this._router.navigate([`/user/${id}`]);
+
+  }
+
+  toGo() {
+    this._router.navigate(['/user/new'])
   }
 
 }
