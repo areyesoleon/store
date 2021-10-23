@@ -1,13 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ListComponent } from './list/list.component';
 import { NewEditComponent } from './new-edit/new-edit.component';
 
 const routes: Routes = [{
   path: 'provider',
   children: [{
     path: '',
+    component: ListComponent
+  }, {
+    path: 'new',
     component: NewEditComponent
-  }]
+  }, {
+    path: ':id',
+    component: NewEditComponent
+  },
+  ]
 }];
 
 @NgModule({

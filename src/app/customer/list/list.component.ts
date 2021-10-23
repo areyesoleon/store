@@ -17,7 +17,7 @@ export class ListComponent implements OnInit {
   customers: Customer[] = [];
 
   constructor(private _core: CoreService, private _router: Router) { 
-    this._api = this._core.newResource('empleados');
+    this._api = this._core.newResource('clientes');
     this._apiEntity = this._core.newResource('entidades');
     this.toGetInfo();
   }
