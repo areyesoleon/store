@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CoreService } from 'src/app/core/core.service';
 import { Branch } from 'src/app/core/models/branch.model';
 import { Customer } from 'src/app/core/models/customer.model';
@@ -22,14 +23,17 @@ export class NewEditComponent extends FormComponent implements OnInit {
   private _apiBranch: Api<Branch>;
   customers: Customer[] = [];
   branches: Branch[] = [];
+  private id: number;
 
 
-  constructor(protected builder: FormBuilder, private _core: CoreService) {
+  constructor(protected builder: FormBuilder, private _core: CoreService, private route: ActivatedRoute, private _router: Router) {
     super();
     this._apiCustomers = this._core.newResource('clientes');
     this._apiEntity = this._core.newResource('entidades');
     this._api = this._core.newResource('ventas');
     this._apiBranch = this._core.newResource('sucursales');
+    this.id = Number(this.route.snapshot.paramMap.get('id'));
+
 
 
 
@@ -56,12 +60,18 @@ export class NewEditComponent extends FormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    if (this.id) {
+      this.toGetById();
+    }
   }
 
   async toSave() {
     try {
-      await this._api.insert(this._form.value).toPromise();
+      if (this.id) {
+        await this._api.update(this._form.value, null, null, this._form.value.id).toPromise();
+      } else {
+        await this._api.insert(this._form.value).toPromise()
+      }
       Swal.fire({
         position: 'top-end',
         icon: 'success',
@@ -106,6 +116,11 @@ export class NewEditComponent extends FormComponent implements OnInit {
     } catch (error) {
 
     }
+  }
+
+  async toGetById() {
+    const resp = await this._api.findById(this.id).toPromise();
+    this._form.patchValue(resp);
   }
 
 }
