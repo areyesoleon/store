@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CoreService } from 'src/app/core/core.service';
 import { Branch } from 'src/app/core/models/branch.model';
 import { Entity } from 'src/app/core/models/entity.model';
@@ -20,6 +21,8 @@ export class NewEditComponent extends FormComponent implements OnInit {
   private _apiEntity: Api<Entity>;
   private _api: Api<any>;
   private _apiBranch: Api<Branch>;
+  private id: number;
+
 
 
 
@@ -27,12 +30,14 @@ export class NewEditComponent extends FormComponent implements OnInit {
   branches: Branch[] = [];
 
 
-  constructor(protected builder: FormBuilder, private _core: CoreService) {
+  constructor(protected builder: FormBuilder, private _core: CoreService, private route: ActivatedRoute, private _router: Router) {
     super();
     this._apiBranch = this._core.newResource('sucursales');
     this._apiProvider = this._core.newResource('proveedores');
     this._apiEntity = this._core.newResource('entidades');
     this._api = this._core.newResource('compras');
+    this.id = Number(this.route.snapshot.paramMap.get('id'));
+
 
     this.toGetProviders();
     this.toInitForm();
@@ -55,7 +60,9 @@ export class NewEditComponent extends FormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    if (this.id) {
+      this.toGetById();
+    }
   }
 
 
@@ -107,6 +114,11 @@ export class NewEditComponent extends FormComponent implements OnInit {
     } catch (error) {
 
     }
+  }
+
+  async toGetById() {
+    const resp = await this._api.findById(this.id).toPromise();
+    this._form.patchValue(resp);
   }
 
 }
