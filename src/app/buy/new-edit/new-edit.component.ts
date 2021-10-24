@@ -8,7 +8,6 @@ import { Provider } from 'src/app/core/models/provider.model';
 import { Api } from 'src/app/core/resource/rest-api';
 import { FormComponent } from 'src/app/core/tools/form.component';
 import Swal from 'sweetalert2';
-import { BuyModule } from '../buy.module';
 
 @Component({
   selector: 'app-new-edit',
