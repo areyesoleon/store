@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CoreService } from 'src/app/core/core.service';
 import { Branch } from 'src/app/core/models/branch.model';
 import { Entity } from 'src/app/core/models/entity.model';
@@ -7,6 +8,7 @@ import { Turn } from 'src/app/core/models/turn.models';
 import { User } from 'src/app/core/models/user.model';
 import { Api } from 'src/app/core/resource/rest-api';
 import { FormComponent } from 'src/app/core/tools/form.component';
+import * as moment from 'moment';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -20,6 +22,7 @@ export class NewEditComponent extends FormComponent implements OnInit {
   private _apiUser: Api<User>;
   private _apiBranch: Api<Branch>;
   private _apiEntity: Api<Entity>;
+  private id: number;
 
 
   branches: Branch[] = [];
@@ -27,12 +30,14 @@ export class NewEditComponent extends FormComponent implements OnInit {
 
 
 
-  constructor(protected builder: FormBuilder, private _core: CoreService) {
+  constructor(protected builder: FormBuilder, private _core: CoreService, private route: ActivatedRoute, private _router: Router) {
     super();
     this._api = this._core.newResource('turnos');
     this._apiUser = this._core.newResource('empleados');
     this._apiBranch = this._core.newResource('sucursales');
     this._apiEntity = this._core.newResource('entidades');
+    this.id = Number(this.route.snapshot.paramMap.get('id'));
+
 
 
     this.toInitForm();
@@ -51,12 +56,18 @@ export class NewEditComponent extends FormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    if (this.id) {
+      this.toGetById();
+    }
   }
 
   async toSave() {
     try {
-      await this._api.insert(this._form.value).toPromise();
+      if (this.id) {
+        await this._api.update(this._form.value, null, null, this._form.value.id).toPromise();
+      } else {
+        await this._api.insert(this._form.value).toPromise()
+      }
       Swal.fire({
         position: 'top-end',
         icon: 'success',
@@ -103,6 +114,17 @@ export class NewEditComponent extends FormComponent implements OnInit {
 
   toClear() {
     this.toInitForm();
+  }
+
+  async toGetById() {
+    const resp = await this._api.findById(this.id).toPromise();
+    const initDate = new Date(resp.fecha_inicio);
+    const finishDate = new Date(resp.fecha_fin);
+    resp.fecha_inicio = moment(`${initDate.getDay()}/${initDate.getMonth()}/${initDate.getFullYear()}`).calendar();
+    resp.fecha_fin = moment(`${finishDate.getDay()}/${finishDate.getMonth()}/${finishDate.getFullYear()}`).calendar();
+
+    console.log(resp);
+    this._form.patchValue(resp);
   }
 
 

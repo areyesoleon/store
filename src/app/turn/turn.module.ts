@@ -6,6 +6,9 @@ import { NewEditComponent } from './new-edit/new-edit.component';
 import { ListComponent } from './list/list.component';
 import { ShareModule } from '../core/share/share.module';
 
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -14,7 +17,10 @@ import { ShareModule } from '../core/share/share.module';
   ],
   imports: [
     ShareModule,
-    TurnRoutingModule
+    TurnRoutingModule,
+    BrowserAnimationsModule,
+    BsDatepickerModule.forRoot(),
+
   ]
 })
 export class TurnModule { }

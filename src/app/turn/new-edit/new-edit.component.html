@@ -32,13 +32,15 @@
         <div class="col-2">
             <div class="form-group">
                 <label for="initDate">Fecha Inicio:</label>
-                <input type="date" class="form-control" formControlName="fecha_inicio">
+                <input type="text" placeholder="Datepicker" class="form-control" formControlName="fecha_inicio"
+                    [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" bsDatepicker>
             </div>
         </div>
         <div class="col-2">
             <div class="form-group">
                 <label for="initDate">Fecha Fin:</label>
-                <input type="date" class="form-control" formControlName="fecha_fin">
+                <input type="text" placeholder="Datepicker" class="form-control" formControlName="fecha_fin"
+                    [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" bsDatepicker>
             </div>
         </div>
     </div>

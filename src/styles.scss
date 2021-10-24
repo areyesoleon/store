@@ -13,3 +13,8 @@ html, body {
     border-radius: 10px 100px / 120px !important;
     cursor: pointer;
 }
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+
+/* Importing Datepicker SCSS file. */
+@import "~ngx-bootstrap/datepicker/bs-datepicker";

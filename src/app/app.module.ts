@@ -14,6 +14,8 @@ import { ProviderModule } from './provider/provider.module';
 import { SaleModule } from './sale/sale.module';
 import { TurnModule } from './turn/turn.module';
 import { UserModule } from './user/user.module';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import { UserModule } from './user/user.module';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BsDatepickerModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
