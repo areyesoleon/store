@@ -3,4 +3,5 @@ export interface Branch {
     emp_encargado_id: number;
     direccion: string;
     telefono: number;
+    nombre: string;
 }
