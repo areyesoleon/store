@@ -26,6 +26,7 @@ export class ProductDetailComponent extends FormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
 
   private toInitForm() {
@@ -72,11 +73,16 @@ export class ProductDetailComponent extends FormComponent implements OnInit {
   }
 
   get total(): number {
+    if (this._form.value.id) {
+      this._form.value.detalles.forEach((row: any) => {
+        row.total = row.cantidad * Number(row.precio);
+      });
+    }
     let total = 0;
     let descuento = 0;
     this._form.value.detalles.forEach((row: any) => {
-      total += row.total;
-      descuento += row.descuento;
+      total += Number(row.total);
+      descuento += Number(row.descuento);
     });
     this._form.patchValue({ total, descuento });
     return total;

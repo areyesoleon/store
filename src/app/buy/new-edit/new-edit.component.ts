@@ -21,6 +21,8 @@ export class NewEditComponent extends FormComponent implements OnInit {
   private _api: Api<any>;
   private _apiBranch: Api<Branch>;
   private id: number;
+  private _apiDetail: Api<any>;
+
 
 
 
@@ -36,6 +38,8 @@ export class NewEditComponent extends FormComponent implements OnInit {
     this._apiEntity = this._core.newResource('entidades');
     this._api = this._core.newResource('compras');
     this.id = Number(this.route.snapshot.paramMap.get('id'));
+    this._apiDetail = this._core.newResource('detalle-compras');
+
 
 
     this.toGetProviders();
@@ -118,6 +122,8 @@ export class NewEditComponent extends FormComponent implements OnInit {
   async toGetById() {
     const resp = await this._api.findById(this.id).toPromise();
     this._form.patchValue(resp);
+    const detalles = await this._apiDetail.find(`venta_id=${this._form.value.id}`).toPromise();
+    this._form.patchValue({detalles});
   }
 
 }
