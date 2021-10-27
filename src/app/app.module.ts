@@ -14,6 +14,7 @@ import { LoginModule } from './login/login.module';
 import { MenuModule } from './menu/menu.module';
 import { ProductModule } from './product/product.module';
 import { ProviderModule } from './provider/provider.module';
+import { ReportModule } from './report/report.module';
 import { SaleModule } from './sale/sale.module';
 import { TurnModule } from './turn/turn.module';
 import { UserModule } from './user/user.module';
@@ -35,6 +36,7 @@ import { UserModule } from './user/user.module';
     SaleModule,
     BuyModule,
     LoginModule,
+    ReportModule,
     MenuModule,
     AppRoutingModule,
     FormsModule,
