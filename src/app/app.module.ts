@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { NgxWebstorageModule } from 'ngx-webstorage';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BranchModule } from './branch/branch.module';
@@ -43,7 +44,12 @@ import { UserModule } from './user/user.module';
     ReactiveFormsModule,
     HttpClientModule,
     BsDatepickerModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxWebstorageModule.forRoot({
+      prefix: 'db1',
+      caseSensitive: false,
+      separator: '-',
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
