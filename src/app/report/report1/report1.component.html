@@ -1,1 +1,23 @@
-<p>report1 works!</p>
+<div class="d-flex justify-content-center">
+    <h1>Reporte</h1>
+</div>
+<div class="d-flex justify-content-center">
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th class="text-center">#</th>
+                <th>Direccion</th>
+                <th>Nombre</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of datos; let i = index">
+                <td class="text-center">{{i + 1}}</td>
+                <td>{{data.direcion}}</td>
+                <td>{{data.nombre}}</td>
+                <td>{{data.total}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
