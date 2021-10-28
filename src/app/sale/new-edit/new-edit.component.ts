@@ -84,6 +84,7 @@ export class NewEditComponent extends FormComponent implements OnInit {
         timer: 1500
       });
       this.toInitForm();
+      this._router.navigate(['/sale']);
     } catch (error) {
       Swal.fire({
         position: 'top-end',

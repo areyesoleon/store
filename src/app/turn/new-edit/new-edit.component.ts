@@ -76,6 +76,7 @@ export class NewEditComponent extends FormComponent implements OnInit {
         timer: 1500
       });
       this.toInitForm();
+      this._router.navigate(['/turn']);
     } catch (error) {
       Swal.fire({
         position: 'top-end',
@@ -120,8 +121,8 @@ export class NewEditComponent extends FormComponent implements OnInit {
     const resp = await this._api.findById(this.id).toPromise();
     const initDate = new Date(resp.fecha_inicio);
     const finishDate = new Date(resp.fecha_fin);
-    resp.fecha_inicio = moment(`${initDate.getDay()}/${initDate.getMonth()}/${initDate.getFullYear()}`).calendar();
-    resp.fecha_fin = moment(`${finishDate.getDay()}/${finishDate.getMonth()}/${finishDate.getFullYear()}`).calendar();
+    resp.fecha_inicio = moment(`${initDate.getFullYear()}-${initDate.getMonth()}-${initDate.getDay()}`).calendar();
+    resp.fecha_fin = moment(`${finishDate.getFullYear()}-${finishDate.getMonth()}-${finishDate.getDay()}`).calendar();
 
     console.log(resp);
     this._form.patchValue(resp);
