@@ -21,8 +21,8 @@
                 <td>{{turn.fecha_inicio | date:'dd/MM/yyyy'}}</td>
                 <td>{{turn.fecha_fin  | date:'dd/MM/yyyy'}}</td>
                 <td>
-                    <button class="btn btn-warning" type="button" (click)="toEdit(turn.id)">
-                        <i class="far fa-edit"></i>
+                    <button class="btn btn-danger" type="button" (click)="toDelete(turn.id, i)">
+                        <i class="fas fa-trash"></i>
                     </button>
                 </td>
             </tr>

@@ -64,8 +64,13 @@ export class NewEditComponent extends FormComponent implements OnInit {
   async toSave() {
     try {
       if (this.id) {
+        console.log(this._form.value);
+        this._form.value.fecha_fin = new Date(this._form.value.fecha_fin);
+        this._form.value.fecha_inicio = new Date(this._form.value.fecha_inicio);
+
         await this._api.update(this._form.value, null, null, this._form.value.id).toPromise();
       } else {
+        console.log(this._form.value);
         await this._api.insert(this._form.value).toPromise()
       }
       Swal.fire({

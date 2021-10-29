@@ -1,17 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Api } from './resource/rest-api';
+import { LocalStorageService } from 'ngx-webstorage';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class CoreService {
 
-  constructor(private http: HttpClient,) { }
+  constructor(private http: HttpClient, private localStorage: LocalStorageService) { }
 
 
   newResource<T>(area: string) {
-    return new Api<T>(this.http, area,);
+    return new Api<T>(this.http, area, this.localStorage);
   }
 
   fechaEstandar(date: Date, separator: string = '/'): string {

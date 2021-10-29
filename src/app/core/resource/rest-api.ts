@@ -1,20 +1,25 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { isNil } from 'lodash';
 import { Observable } from 'rxjs';
+import { LocalStorageService } from 'ngx-webstorage';
+
 export class Api<T> {
   private _url: string;
   private headers: HttpHeaders;
   constructor(
     public _http: HttpClient,
     public _area: string,
+    private localStorage: LocalStorageService
   ) {
     this._url = 'http://138.197.214.214:8010';
+    const user = localStorage.retrieve('user');
     this.headers = new HttpHeaders({
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, HEAD',
       'Access-Control-Allow-Headers':
         `Content-Type, Depth, User-Agent, X-File-Size, X-Requested-With, If-Modified-Since, X-File-Name, Cache-Control`,
-      'Content-Type': 'Application/json'
+      'Content-Type': 'Application/json',
+      'usuario_id': `${user.usuario_id}`
     });
   }
 
@@ -45,6 +50,7 @@ export class Api<T> {
   }
 
   delete(id?: number): Observable<T> {
-    return this._http.delete<T>(`${this._url}/${this._area}/${id}}`, { headers: this.headers });
+    console.log(`${this._url}/${this._area}/${id}}`);
+    return this._http.delete<T>(`${this._url}/${this._area}/${id}`, { headers: this.headers });
   }
 }

@@ -4,6 +4,8 @@ import { Component, OnInit } from '@angular/core';
 import { Api } from 'src/app/core/resource/rest-api';
 import { CoreService } from 'src/app/core/core.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-list',
@@ -29,8 +31,16 @@ export class ListComponent implements OnInit {
     this.turns = await this._api.find().toPromise(); 
   }
 
-  toEdit(id: number = 0) {
-    this._router.navigate([`/turn/${id}`]);
+  async toDelete(id: number = 0, index: number) {
+    await this._api.delete(Number(id)).toPromise();
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Turno guardado',
+      showConfirmButton: false,
+      timer: 1500
+    });
+    this.turns.splice(index, 1);
 
   }
 
