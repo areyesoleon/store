@@ -39,7 +39,7 @@ export class NewEditComponent extends FormComponent implements OnInit {
         nit: [null, [Validators.required]],
         telefono: [null, [Validators.required]],
         direccion: [null, [Validators.required]],
-        fecha_nacimiento: [null, [Validators.required]],
+        fecha_nacimiento: [null, new Date()],
         correo: [null, [Validators.required]]
       })
     });
