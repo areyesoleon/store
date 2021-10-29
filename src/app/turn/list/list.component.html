@@ -6,6 +6,7 @@
         <thead>
             <tr>
                 <th class="text-center">#</th>
+                <th>Empleado</th>
                 <th>Inicio</th>
                 <th>Fin</th>
                 <th>
@@ -18,6 +19,7 @@
         <tbody>
             <tr *ngFor="let turn of turns; let i = index">
                 <td class="text-center">{{i + 1}}</td>
+                <td>{{turn.nombre}}</td>
                 <td>{{turn.fecha_inicio | date:'dd/MM/yyyy'}}</td>
                 <td>{{turn.fecha_fin  | date:'dd/MM/yyyy'}}</td>
                 <td>
