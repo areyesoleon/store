@@ -1,1 +1,23 @@
-<p>list works!</p>
+<div class="d-flex justify-content-center">
+    <h1>Inventario</h1>
+</div>
+<div class="d-flex justify-content-center">
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th class="text-center">#</th>
+                <th>Sucursal</th>
+                <th>Producto</th>
+                <th>Cantidad</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let inv of lista; let i = index">
+                <td class="text-center">{{i + 1}}</td>
+                <td>{{inv.sucursal}}</td>
+                <td>{{inv.producto}}</td>
+                <td>{{inv.cantidad}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
