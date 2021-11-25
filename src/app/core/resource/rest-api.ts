@@ -11,15 +11,16 @@ export class Api<T> {
     public _area: string,
     private localStorage: LocalStorageService
   ) {
-    this._url = 'http://138.197.214.214:8010';
+    this._url = 'http://localhost:8010';
     const user = localStorage.retrieve('user');
+    console.log(user);
     this.headers = new HttpHeaders({
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, HEAD',
       'Access-Control-Allow-Headers':
         `Content-Type, Depth, User-Agent, X-File-Size, X-Requested-With, If-Modified-Since, X-File-Name, Cache-Control`,
       'Content-Type': 'Application/json',
-      'usuario_id': `${user.usuario_id}`
+      'usuario_id': `${user != null ? user.usuario_id : 0}`
     });
   }
 

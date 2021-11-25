@@ -55,7 +55,7 @@ export class NewEditComponent extends FormComponent implements OnInit {
       metodo_pago_id: [0, [Validators.required]],
       estado_venta_id: 1,
       documento: [null, [Validators.required]],
-      fecha: [null, [Validators.required]],
+      fecha: [new Date(), [Validators.required]],
       direccion_entrega: [null, [Validators.required]],
       detalles: [[]],
       total: 0,
@@ -71,6 +71,8 @@ export class NewEditComponent extends FormComponent implements OnInit {
 
   async toSave() {
     try {
+      const fecha = this._form.value.fecha;
+      this._form.value.fecha = `${new Date(fecha).getFullYear()}-${new Date(fecha).getMonth()}-${new Date(fecha).getDay()}`;
       if (this.id) {
         await this._api.update(this._form.value, null, null, this._form.value.id).toPromise();
       } else {

@@ -51,7 +51,8 @@
         <div class="col-2">
             <div class="form-group">
                 <label for="date">Fecha:</label>
-                <input type="date" id="date" name="date" class="form-control" formControlName="fecha">
+                <br>
+               <span>{{form.value.fecha | date: 'yyyy/MM/dd'}}</span>
             </div>
         </div>
     </div>

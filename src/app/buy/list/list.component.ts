@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CoreService } from 'src/app/core/core.service';
 import { Api } from 'src/app/core/resource/rest-api';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-list',
@@ -35,6 +37,19 @@ export class ListComponent implements OnInit {
 
   toGo() {
     this._router.navigate(['/buy/new'])
+  }
+
+  async toDelete(id: number = 0, index: number) {
+    await this._api.delete(Number(id)).toPromise();
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Compra eliminada',
+      showConfirmButton: false,
+      timer: 1500
+    });
+    this.buys.splice(index, 1);
+
   }
 
 }

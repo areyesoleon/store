@@ -78,24 +78,6 @@ export class MenuComponent implements OnInit {
       title: 'Inventario',
       click: '/inventory'
     },
-    {
-      id: 9,
-      icon: 'fa-file',
-      title: 'Reporte 1',
-      click: '/report/1'
-    },
-    {
-      id: 10,
-      icon: 'fa-file',
-      title: 'Reporte 2',
-      click: '/report/2'
-    },
-    {
-      id: 11,
-      icon: 'fa-file',
-      title: 'Reporte 3',
-      click: '/report/3'
-    },
   ];
 
   // public options = []

@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Api } from 'src/app/core/resource/rest-api';
 import { CoreService } from 'src/app/core/core.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-list',
@@ -31,6 +33,19 @@ export class ListComponent implements OnInit {
 
   toEdit(id: number = 0) {
     this._router.navigate([`/sale/${id}`]);
+
+  }
+
+  async toDelete(id: number = 0, index: number) {
+    await this._api.delete(Number(id)).toPromise();
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Venta Eliminada',
+      showConfirmButton: false,
+      timer: 1500
+    });
+    this.sales.splice(index, 1);
 
   }
 
